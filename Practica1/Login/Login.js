@@ -2,9 +2,9 @@
 
 const jwt = require('jsonwebtoken');
 const users = new Map();
-users.set('wjosuep13', { password: '123', rol: 1 });
-users.set('edsilon', { password: '123', rol: 2 });
-users.set('repartidor', { password: '123', rol: 3 });
+users.set('wjosuep13', { password: '123', rol: 1 });//cliente
+users.set('edsilon', { password: '123', rol: 2 });//pos el otro
+users.set('repartidor', { password: '123', rol: 3 });//repartidor
 
 exports.login = function (req, res) {
 
@@ -32,4 +32,7 @@ exports.login = function (req, res) {
   }
 
 };
+
+
+
 
