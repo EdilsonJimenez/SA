@@ -22,7 +22,6 @@ exports.login = function (req, res) {
         data: { token }
       })
 
-
     } else {
 
       res.json({
