@@ -11,17 +11,26 @@ const ENVIADO = 3;
 const ENTREGRADO = 4;
 
 module.exports.crearPedido = (req, res) => {
-    var pedido = req.body;
-    pedido.estado = PENDIENTE;
+    //validar rol
+    if (req.user.rol === 1 || req.user.rol === 2) {
 
-    const id = uuid();
+        var pedido = req.body;
+        pedido.estado = PENDIENTE;
 
-    pedidos[id] = pedido;
+        const id = uuid();
 
-    return res.send({
-        mensaje: "Pedido creado exitosamente",
-        orden: id
-    })
+        pedidos[id] = pedido;
+
+        return res.send({
+            mensaje: "Pedido creado exitosamente",
+            orden: id
+        })
+    } else {
+        return res.status(400).send({
+            mensaje: "No tiene acceso a este servicio"
+        })
+    }
+
 }
 
 module.exports.obtenerPedido = (req, res) => {
@@ -41,6 +50,11 @@ module.exports.obtenerPedido = (req, res) => {
 }
 
 module.exports.enviarPedido = async (req, res) => {
+    if (req.user.rol !== 2)
+        return res.status(400).send({
+            mensaje: "No tiene acceso a este servicio"
+        })
+
     const repartidor = req.body.repartidor;
     const id = req.body.pedido;
 
@@ -48,7 +62,11 @@ module.exports.enviarPedido = async (req, res) => {
     const pedido = pedidos[id];
 
     if (pedido) {
-        const result = await axios.post("http://localhost:7000/recibir", { repartidor, pedido: id });
+        const result = await axios.post("http://localhost:7000/recibir", { repartidor, pedido: id }, {
+            headers: {
+                "auth-token": req.headers["auth-token"]
+            }
+        });
 
         if (result) {
             pedidos[id].estado = ENVIADO;
@@ -68,16 +86,23 @@ module.exports.enviarPedido = async (req, res) => {
 }
 
 module.exports.actualizarEstado = (req, res) => {
-    const id = req.params.id;
+    if (req.user.rol === 2 || req.user.rol === 3) {
 
-    if(pedidos[id]){
-        if(isNaN(+req.body.estado)) return res.status(400).send({ mensaje: "El estado debe ser numerico"});
-        pedidos[id].estado = +req.body.estado;
+        const id = req.params.id;
 
-        return res.send({mensaje: "Estado actualizado correctamente"});
+        if (pedidos[id]) {
+            if (isNaN(+req.body.estado)) return res.status(400).send({ mensaje: "El estado debe ser numerico" });
+            pedidos[id].estado = +req.body.estado;
+
+            return res.send({ mensaje: "Estado actualizado correctamente" });
+        } else {
+            return res.status(404).send({
+                mensaje: "No existe pedido con id " + id
+            })
+        }
     } else {
-        return res.status(404).send({
-            mensaje: "No existe pedido con id " + id
+        return res.status(400).send({
+            mensaje: "No tiene acceso a este servicio"
         })
     }
 }
