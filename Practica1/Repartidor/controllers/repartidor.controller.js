@@ -36,7 +36,11 @@ module.exports.obtenerPedido = async (req, res) => {
         var pedido = pedidos[id];
 
         if (pedido) {
-            const result = await axios.get("http://localhost:6000/pedido/" + id);
+            const result = await axios.get("http://localhost:6000/pedido/" + id, {
+                headers: {
+                    "auth-token": req.headers["auth-token"]
+                }
+            });
 
             if (result) {
                 return res.send({ mensaje: "Pedido obtenido exitosamente", pedido: result.data.pedido });
@@ -67,7 +71,11 @@ module.exports.entregarPedido = async (req, res) => {
     const pedido = pedidos[id];
 
     if (pedido) {
-        const result = await axios.put("http://localhost:6000/pedido/" + id, { estado: ENTREGRADO });
+        const result = await axios.put("http://localhost:6000/pedido/" + id, { estado: ENTREGRADO }, {
+            headers: {
+                "auth-token": req.headers["auth-token"]
+            }
+        });
 
         if (result) {
             delete pedidos[id]
