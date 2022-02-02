@@ -1,7 +1,8 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const user = require('./Login');
+require('dotenv').config()
 const cors=require("cors");
 const corsOptions ={
   origin: '*',
@@ -21,6 +22,8 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
   res.send("Hello World");
 });
+
+app.post('/login',user.login);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
