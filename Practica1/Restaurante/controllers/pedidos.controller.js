@@ -19,7 +19,7 @@ module.exports.crearPedido = (req, res) => {
 
         const id = uuid();
 
-        pedidos[id] = pedido;
+        pedidos[id] = { ...pedido };
 
         return res.send({
             mensaje: "Pedido creado exitosamente",
@@ -35,7 +35,7 @@ module.exports.crearPedido = (req, res) => {
 
 module.exports.obtenerPedido = (req, res) => {
     const id = req.params.id;
-    var pedido = pedidos[id];
+    var pedido = {...pedidos[id]};
 
     if (pedido) {
         return res.send({
