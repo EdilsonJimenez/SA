@@ -18,7 +18,7 @@ pipeline {
             cd Practica_3
             cd frontendpractica2
             npm run build 
-        '''
+        """
       }
     }
 
