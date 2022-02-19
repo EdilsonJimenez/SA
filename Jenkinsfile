@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'latest'
-    }
-
-  }
+  agent any
   stages {
     stage('build') {
       steps {
