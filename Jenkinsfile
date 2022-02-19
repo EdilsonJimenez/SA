@@ -3,17 +3,18 @@ pipeline {
   stages {
     stage('install') {
       steps {
-        bat '''
+        bat """
             cd Practica_3
             cd frontendpractica2
             npm install   
-        '''
+        """ 
+
       }
     }
 
     stage('build') {
       steps {
-        bat '''
+        bat """
             cd Practica_3
             cd frontendpractica2
             npm run build 
@@ -23,11 +24,11 @@ pipeline {
 
     stage('test') {
       steps {
-        bat '''
+        bat """
             cd Practica_3
             cd frontendpractica2
             npm run test:unit  
-         '''
+         """
       }
     }
 
