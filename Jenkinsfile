@@ -3,16 +3,16 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'cd Practica_3'
-        sh 'cd frontendpractica2'
-        sh 'npm install'
-        sh 'npm run build'
+        bat 'cd Practica_3'
+        bat 'cd frontendpractica2'
+        bat 'npm install'
+        bat 'npm run build'
       }
     }
 
     stage('test') {
       steps {
-        sh 'npm run test:unit'
+        bat 'npm run test:unit'
       }
     }
 
