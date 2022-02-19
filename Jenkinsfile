@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'pipeline_practica3'
-    }
-
-  }
+  agent any
   stages {
     stage('build') {
       steps {
