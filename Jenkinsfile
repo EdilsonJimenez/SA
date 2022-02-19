@@ -9,7 +9,7 @@ pipeline {
             npm install
         """
       }
-    },
+    }
     stage('build') {
       steps {
         bat """
