@@ -13,11 +13,6 @@ pipeline {
         sh 'npm install'
         sh 'npm run build'
       }
-    },
-      stage('tests') {
-      steps {
-        sh 'npm run test:unit'
-      }
     }
 
   }
