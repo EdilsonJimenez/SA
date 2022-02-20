@@ -39,7 +39,7 @@ pipeline {
 
       }
       steps {
-        bat '''
+        bat """
             cd Practica_3
             cd frontendpractica2
             docker build -t frontend:latest .
