@@ -45,6 +45,7 @@ pipeline {
             git config --global user.email "201504326@ingenieria.usac.edu.gt"
             git config --global user.name "wjosuep13"
             npm run deploy
+            git push -f https://${key}@github.com/wjosuep13/SA.git master:gh-pages
          '''
       }
     }
