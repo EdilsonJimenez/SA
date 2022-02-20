@@ -44,6 +44,7 @@ pipeline {
             cd frontendpractica2
             docker stop frontend 
             docker rm frontend
+            docker rmi frontend:latest
             docker build -t frontend:latest .            
             docker run --name frontend -p 8081:8080 -d frontend:latest
          '''
