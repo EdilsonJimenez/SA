@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <img class="logo" alt="Vue logo" src="./assets/SA_Logo.png" />
-<<<<<<< HEAD
-    <HelloWorld msg="Pareja 5 CICD" />
-=======
     <HelloWorld msg="Pareja 5 test CICD" />
->>>>>>> 9a99708118aae3fa6da40fa9389315f69638fd19
   </div>
 </template>
 
