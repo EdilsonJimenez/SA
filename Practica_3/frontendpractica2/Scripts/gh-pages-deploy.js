@@ -12,7 +12,7 @@ const fs = require("fs");
     await execa("git", ["--work-tree", folderName, "add", "--all"]);
     await execa("git", ["--work-tree", folderName, "commit", "-m", "gh-pages"]);
     console.log("Pushing to gh-pages...");
-    await execa("git", ["push", "https://github.com/wjosuep13/SA.git", "main:gh-pages", "--force"]);
+    await execa("git", ["push", `https://wjosuep13:${process.env.pass}@github.com/wjosuep13/SA.git`, "main:gh-pages", "--force"]);
     console.log("Pusheadoxd..");
     await execa("git", ["checkout", "-f", "main"]);
     await execa("git", ["branch", "-D", "gh-pages"]);
