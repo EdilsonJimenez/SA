@@ -15,8 +15,8 @@ const fs = require("fs");
      //console.log(${key});
     //await execa("git", ["push", "https://${key}@github.com/wjosuep13/SA.git", "main:gh-pages", "--force"]);
    
-    await execa("git", ["checkout", "-f", "main"]);
-    await execa("git", ["branch", "-D", "gh-pages"]);
+    //await execa("git", ["checkout", "-f", "main"]);
+    //await execa("git", ["branch", "-D", "gh-pages"]);
     console.log("Successfully deployed, check your settings");
   } catch (e) {
     // eslint-disable-next-line no-console
