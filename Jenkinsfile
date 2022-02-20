@@ -40,7 +40,7 @@ pipeline {
           }
       steps {
         bat """
-            echo deploy stage
+            npm run deploy
          """
       }
     }
