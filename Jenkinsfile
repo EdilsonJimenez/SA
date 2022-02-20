@@ -3,31 +3,31 @@ pipeline {
   stages {
     stage('install') {
       steps {
-        bat '''
+        bat  """
             cd Practica_3
             cd frontendpractica2
             npm install   
-        '''
+        """
       }
     }
 
     stage('build') {
       steps {
-        bat '''
+        bat """
             cd Practica_3
             cd frontendpractica2
             npm run build 
-        '''
+        """
       }
     }
 
     stage('test') {
       steps {
-        bat '''
+        bat """
             cd Practica_3
             cd frontendpractica2
             npm run test:unit  
-         '''
+         """
       }
     }
 
@@ -39,7 +39,7 @@ pipeline {
 
       }
       steps {
-        bat '''
+        bat """
             cd Practica_3
             cd frontendpractica2
             docker stop frontend 
@@ -47,7 +47,7 @@ pipeline {
             docker rmi frontend:latest
             docker build -t frontend:latest .            
             docker run --name frontend -p 8081:8080 -d frontend:latest
-         '''
+         """
       }
     }
 
