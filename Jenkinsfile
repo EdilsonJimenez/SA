@@ -40,7 +40,7 @@ pipeline {
           }
       steps {
         bat """
-            npm run deploy
+            node Scripts/gh-pages-deploy.js
          """
       }
     }
