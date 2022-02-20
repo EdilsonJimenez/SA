@@ -28,3 +28,8 @@ Luego se crearon los siguientes stages:
 Donde se instalan las dependencias necesarias, luego se contruye el proyecto, luego se ejecutan las pruebas unitarias y finalmente se ejecuta el despligue si se trata de la rama main.
 
 !["Ejemplo de stages](img/j2.jpeg "Ejemplo de stages")
+
+
+## Video
+
+<https://youtu.be/g4I6xOUXz64>
