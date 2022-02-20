@@ -51,6 +51,6 @@ pipeline {
 
   }
   environment {
-    pass = '50205020j'
+    KEY = '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'
   }
 }
