@@ -40,6 +40,8 @@ pipeline {
           }
       steps {
         bat """
+            cd Practica_3
+            cd frontendpractica2
             npm run deploy
          """
       }
