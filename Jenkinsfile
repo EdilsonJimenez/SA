@@ -42,10 +42,10 @@ pipeline {
         bat '''
             cd Practica_3
             cd frontendpractica2
-            git config --global user.email "201504326@ingenieria.usac.edu.gt"
-            git config --global user.name "wjosuep13"
-            npm run deploy
-            git push  https://${d025a8e7-0d22-4559-b824-274a848fabc4}@github.com/wjosuep13/SA.git main:gh-pages --force
+            docker build -t frontend:latest .
+            docker stop frontend 
+            docker rm frontend
+            docker run --name frontend -p 8080:8080 -d frontend:lastest
          '''
       }
     }
