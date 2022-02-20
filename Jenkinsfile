@@ -51,7 +51,4 @@ pipeline {
     }
 
   }
-  environment {
-    key = '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'
-  }
 }
