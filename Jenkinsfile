@@ -42,6 +42,7 @@ pipeline {
         bat """
             cd Practica_3
             cd frontendpractica2
+            git config --global user.email "201504326@ingenieria.usac.edu.gt"
             git config --global user.name "wjosuep13"
             npm run deploy
          """
