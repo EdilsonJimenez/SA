@@ -1,6 +1,7 @@
 pipeline {
   agent any
   stages {
+    
     stage('install') {
       steps {
         bat """
@@ -28,6 +29,18 @@ pipeline {
             cd Practica_3
             cd frontendpractica2
             npm run test:unit  
+         """
+      }
+    }
+        stage('deploy') {
+          when {
+            expression {
+               env.BRANCH_NAME == 'main'
+              }
+          }
+      steps {
+        bat """
+            echo deploy stage
          """
       }
     }
