@@ -1,0 +1,36 @@
+---
+# All tasks below are run in "staging" server.
+ 
+- name: Deploy the application to the "staging" server
+  hosts: staging
+  remote_user: edilson35s78
+  become: yes
+  tasks:
+    - name: Create the application directory
+      file:
+        path: /home/edilson35s78/app
+        state: directory
+        owner: edilson35s78
+        group: edilson35s78
+    - name: Copy docker files over
+      copy:
+        src: /mnt/c/ProgramData/Jenkins/.jenkins/workspace/Practica_3/docker-compose.yml
+        dest: /home/edilson35s78/app/docker
+        owner: edilson35s78
+        group: edilson35s78
+    - name: Copy docker files over2
+      copy:
+        src: /mnt/c/ProgramData/Jenkins/.jenkins/workspace/Practica_3/frontendpractica2/dockerfile
+        dest: /home/edilson35s78/app/docker
+        owner: edilson35s78
+        group: edilson35s78
+    - name: Bring the application up
+      make:
+        chdir: /home/edilson35s78/app/docker
+        target: run
+    - name: Install "secure-delete" package
+      apt:
+        name: secure-delete
+        state: present
+    - name: Secure deleting application files
+      command: srm -vzr /home/edilson35s78/app

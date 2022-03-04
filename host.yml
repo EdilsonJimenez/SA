@@ -1,0 +1,7 @@
+all:
+  hosts:
+    staging:
+      ansible_connection: ssh
+      ansible_user: edilson35s78
+      ansible_host: 34.67.38.34
+      ansible_port: 22
