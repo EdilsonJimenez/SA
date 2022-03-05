@@ -18,8 +18,8 @@ pipeline {
     stage('build') {
       steps {
         sh '''
-            docker compose build --no-cache
-            docker compose push
+            docker-compose build --no-cache
+            docker-compose push
             docker system prune --force --filter \'until=2h\'
             docker volume prune --force
         '''
