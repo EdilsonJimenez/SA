@@ -1,10 +1,11 @@
 pipeline {
   agent any
+  tools{nodejs "nodejs"}
   stages {
     stage('testing') {
       steps {
         sh '''npm --version
-cd Practica_4
+              cd Practica_4
               cd frontendpractica2
               npm install
               npm run build
