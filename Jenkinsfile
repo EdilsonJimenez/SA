@@ -1,13 +1,17 @@
 pipeline {
   agent any
+  tools {
+    nodejs 'node'
+  }
   stages {
     stage('testing') {
       steps {
         sh '''cd Practica_4
-cd frontendpractica2
-npm install
-npm run build
-npm run test:unit'''
+              cd frontendpractica2
+              npm install
+              npm run build
+              npm run test:unit
+        '''
       }
     }
 
