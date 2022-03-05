@@ -4,6 +4,6 @@ services:
   deployservice:
     container_name: app_container 
     build: ./Practica_4/frontendpractica2
-    image: p5_image
+    image: "wjosuep13/p5_image:latest"
     ports: 
       - 8080:8080
