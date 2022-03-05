@@ -19,7 +19,7 @@ pipeline {
       steps {
         sh '''
             docker-compose build --no-cache
-            docker login -u $6d7299f0-be5f-431e-a587-22864e860b68 --password-stdin'
+            docker login -u $6d7299f0-be5f-431e-a587-22864e860b68 --password-stdin
             docker-compose push
             docker system prune --force --filter \'until=2h\'
             docker volume prune --force
