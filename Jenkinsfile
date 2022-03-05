@@ -19,7 +19,7 @@ pipeline {
       steps {
         sh '''
             docker-compose build --no-cache
-            echo $dockerhub-cr | docker login -u wjosuep13 --password-stdin
+            echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
             docker-compose push
             docker system prune --force --filter \'until=2h\'
             docker volume prune --force
@@ -34,6 +34,7 @@ pipeline {
         '''
       }
     }
-
+   environment {
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub-cr')
   }
 }
