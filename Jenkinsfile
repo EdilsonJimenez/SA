@@ -1,54 +1,34 @@
 pipeline {
   agent any
   stages {
-    stage('install') {
+    stage('testing') {
       steps {
-        bat """
-            cd Practica_3
+        sh """
+            cd Practica_4
             cd frontendpractica2
-            npm install   
+            npm install
+            npm run build
+            npm run test:unit  
         """
       }
     }
 
     stage('build') {
       steps {
-        bat """
-            cd Practica_3
-            cd frontendpractica2
-            npm run build 
+        sh """
+            docker compose build --no-cache
+            docker compose push
+            docker system prune --force --filter 'until=2h'
+            docker volume prune --force
         """
       }
     }
-
-    stage('test') {
-      steps {
-        bat """
-            cd Practica_3
-            cd frontendpractica2
-            npm run test:unit  
-         """
-      }
-    }
-
     stage('deploy') {
-      when {
-        expression {
-          env.BRANCH_NAME == 'main'
-        }
-
-      }
       steps {
-        bat """
-            cd Practica_3
-            cd frontendpractica2
-            docker build -t frontend:latest .
-            docker stop frontend 
-            docker rm frontend
-            docker run --name frontend -p 8081:8080 -d frontend:latest
-         """
+        sh """
+            ansible-playbook playbook.yml -i host.yml
+        """
       }
     }
-
   }
 }
