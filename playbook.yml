@@ -14,13 +14,13 @@
         group: edilson35s78
     - name: Copy docker files over
       copy:
-        src: /mnt/c/ProgramData/Jenkins/.jenkins/workspace/Practica_3/docker-compose.yml
+        src:  /var/lib/jenkins/workspace/SA_PRA_P14_develop/Practica_3/docker-compose.yml
         dest: /home/edilson35s78/app/docker
         owner: edilson35s78
         group: edilson35s78
     - name: Copy docker files over2
       copy:
-        src: /mnt/c/ProgramData/Jenkins/.jenkins/workspace/Practica_3/frontendpractica2/dockerfile
+        src:  /var/lib/jenkins/workspace/SA_PRA_P14_develop/Practica_5/frontendpractica2/dockerfile
         dest: /home/edilson35s78/app/docker
         owner: edilson35s78
         group: edilson35s78
