@@ -19,7 +19,7 @@ pipeline {
       steps {
         sh '''
             docker-compose build --no-cache
-            echo $dockerhub-cr | docker login -u wjosuep13 --password-stdin'
+            echo $dhubpass | docker login -u wjosuep13 --password-stdin
             docker-compose push
             docker system prune --force --filter \'until=2h\'
             docker volume prune --force
