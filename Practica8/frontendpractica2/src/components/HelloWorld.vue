@@ -8,37 +8,55 @@
     <ul>
       201504326
     </ul>
-    <br/>
+    <br />
     <ul>
       Edilson Eduardo Jimenez Garcia
     </ul>
     <ul>
       201513364
     </ul>
-    <ul>
-
-    </ul>
-        <br/>
+    <ul></ul>
+    <br />
     <ul>
       Software Avanzado B
     </ul>
-        <ul>
-      Cantidad de veces consumido: {{consumido}}
+    <ul>
+      Cantidad de veces consumido:
+      {{
+        consumido
+      }}
     </ul>
-      <button>Consumir Endpoint</button>
+    <button @click="consume">Consumir Endpoint</button>
   </div>
-
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "HelloWorld",
   props: {
     msg: String,
   },
-  data:{
-    consumido:0
-  }
+  data: function () {
+    return {
+      consumido: 0,
+      url: "http://localhost:3000",
+    };
+  },
+  mounted() {
+    this.getdata();
+  },
+  methods: {
+    getdata() {
+      axios.get(this.url).then((response) => (this.consumido = response.data));
+    },
+    consume() {
+      axios.post(this.url, {}).then((response) => {
+        console.log(response.data);
+        this.getdata();
+      });
+    },
+  },
 };
 </script>
 
