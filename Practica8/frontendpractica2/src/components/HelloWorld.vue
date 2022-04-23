@@ -40,7 +40,7 @@ export default {
   data: function () {
     return {
       consumido: 0,
-      url: "http://localhost:3000",
+      url: "http://35.192.128.230:3000",
     };
   },
   mounted() {
